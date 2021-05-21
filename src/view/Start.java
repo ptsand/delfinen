@@ -37,6 +37,8 @@ public class Start implements View {
                 // controller.setView(RedigerMedlem.getInstance());
                 break;
             case "q":
+                System.out.println("Gemmer programmets tilstand");
+                controller.gemTilstand();
                 System.out.println("Farvel...");
                 System.exit(0);
         }

@@ -27,4 +27,12 @@ public class Controller {
     public void tilføjMedlem(Medlem medlem) {
         medlemmer.add(medlem);
     }
+
+    public void hentTilstand() {
+        // TODO: Tilføj medlemmer fra csv til "medlemmer" arraylisten
+    }
+
+    public void gemTilstand() {
+        // TODO: Gem medlemmer til csv fra "medlemmer" arraylisten.
+    }
 }
