@@ -1,7 +1,6 @@
 package controller;
 
 import model.Medlem;
-import view.Start;
 import view.View;
 import java.util.ArrayList;
 
