@@ -34,7 +34,7 @@ public class Start implements View {
                 break;
             case "2":
                 System.out.println("Går til rediger medlem");
-                // controller.setView(RedigerMedlem.getInstance());
+                controller.setView(RedigerMedlem.getInstance());
                 break;
             case "q":
                 System.out.println("Gemmer programmets tilstand");

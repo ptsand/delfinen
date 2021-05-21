@@ -30,7 +30,9 @@ public class OpretMedlem implements View {
         String telefon = in.next();
         System.out.println("Email: ");
         String email = in.next();
-        controller.tilføjMedlem(new Medlem(navn, telefon, email));
+        System.out.println("Fødselsdato: ");
+        String fødselsdato = in.next();
+        controller.tilføjMedlem(new Medlem(navn, telefon, email, fødselsdato));
         System.out.printf("%s er nu oprettet som medlem", navn);
         controller.setView(Start.getInstance());
     }
