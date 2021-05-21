@@ -1,0 +1,31 @@
+package controller;
+
+import model.Medlem;
+import view.Start;
+import view.View;
+import java.util.ArrayList;
+
+public class Controller {
+
+    private ArrayList<Medlem> medlemmer = new ArrayList<Medlem>();
+    private View view;
+
+    public ArrayList<Medlem> getMedlemmer() {
+        return medlemmer;
+    }
+
+    public Controller(View view) {
+        this.view = view;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+        if (view.getController() == null) view.setController(this);
+        view.print();
+        view.handleInput();
+    }
+
+    public void tilføjMedlem(Medlem medlem) {
+        medlemmer.add(medlem);
+    }
+}
