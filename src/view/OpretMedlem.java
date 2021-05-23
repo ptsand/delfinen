@@ -1,9 +1,11 @@
 package view;
 
-import java.util.Collections;
 import java.util.Scanner;
+import java.time.LocalDate;
 import controller.Controller;
+import model.KonkurrenceSvømmer;
 import model.Medlem;
+import model.MedlemStatus;
 
 public class OpretMedlem implements View {
 
@@ -30,11 +32,24 @@ public class OpretMedlem implements View {
         String telefon = in.next();
         System.out.println("Email: ");
         String email = in.next();
-        System.out.println("Fødselsdato: ");
-        String fødselsdato = in.next();
-        controller.tilføjMedlem(new Medlem(navn, telefon, email, fødselsdato));
-        System.out.printf("%s er nu oprettet som medlem", navn);
-        controller.setView(Start.getInstance());
+        System.out.println("Fødselsdato (Year-Month-Day): ");
+        LocalDate fødselsdato = LocalDate.parse(in.next());
+        System.out.println("Vælg status: ");
+        MedlemStatus[] status = MedlemStatus.values();
+        for (int i = 0; i < status.length; i++) {
+            System.out.printf("%d) %s\n", i, status[i]);
+        }
+        int valg = in.nextInt();
+        MedlemStatus valgtStatus = status[valg];
+        System.out.println("Konkurrence svømmer (ja/nej, default=nej): ");
+        String konkurrenceSvømmer = in.next();
+        if (konkurrenceSvømmer.equalsIgnoreCase("ja")) {
+            controller.tilføjMedlem(new KonkurrenceSvømmer(navn, telefon, email, fødselsdato, valgtStatus));
+        } else {
+            controller.tilføjMedlem(new Medlem(navn, telefon, email, fødselsdato, valgtStatus));
+        }
+        System.out.printf("%s er nu oprettet som medlem\n", navn);
+        controller.setView(StartMenu.getInstance());
     }
 
     @Override

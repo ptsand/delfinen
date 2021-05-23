@@ -2,16 +2,15 @@ package view;
 
 import java.util.Scanner;
 import controller.Controller;
-import model.Medlem;
 
-public class Start implements View {
+public class StartMenu implements View {
 
     private Controller controller;
-    private static Start instance;
+    private static StartMenu instance;
 
-    public static Start getInstance(){
+    public static StartMenu getInstance(){
         if(instance == null){
-            instance = new Start();
+            instance = new StartMenu();
         }
         return instance;
     }
@@ -20,8 +19,10 @@ public class Start implements View {
         System.out.println("Hovedmenu:");
         System.out.println("1. Opret nyt medlem");
         System.out.println("2. Rediger eksisterende medlem");
-        System.out.println("3. ....");
-        System.out.println("q. Exit");
+        System.out.println("3. Tilføj træningsresultat");
+        System.out.println("4. Se Top5");
+        System.out.println("q. Luk og gem");
+        System.out.println("x. Luk uden at gemme");
     }
 
     @Override
@@ -29,17 +30,23 @@ public class Start implements View {
         Scanner in = new Scanner(System.in);
         switch (in.next()) {
             case "1":
-                System.out.println("Du har valgt at oprette et nyt medlem");
                 controller.setView(OpretMedlem.getInstance());
                 break;
             case "2":
-                System.out.println("Går til rediger medlem");
                 controller.setView(RedigerMedlem.getInstance());
                 break;
+            case "3":
+                controller.setView(TilføjTræningsResultat.getInstance());
+                break;
+            case "4":
+                controller.setView(SeTop5.getInstance());
+                break;
             case "q":
-                System.out.println("Gemmer programmets tilstand");
+                System.out.println("Gemmer og lukker");
                 controller.gemTilstand();
-                System.out.println("Farvel...");
+                System.exit(0);
+            case "x":
+                System.out.println("Lukker uden at gemme");
                 System.exit(0);
         }
     }

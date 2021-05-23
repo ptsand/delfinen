@@ -1,4 +1,3 @@
 package model;
-
-public class Disciplin {
-}
+// @Author Peter Sand
+public enum Disciplin { BUTTERFLY, CRAWL, RYGCRAWL, BRYSTSVØMNING };
