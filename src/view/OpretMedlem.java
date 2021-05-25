@@ -1,15 +1,16 @@
 package view;
 
-import java.util.Scanner;
 import java.time.LocalDate;
 import controller.Controller;
 import model.KonkurrenceSvømmer;
 import model.Medlem;
 import model.MedlemStatus;
+import util.KonsolInputOutput;
 
 public class OpretMedlem implements View {
 
     private Controller controller;
+    private KonsolInputOutput io;
     private static OpretMedlem instance;
 
     public static OpretMedlem getInstance(){
@@ -20,41 +21,49 @@ public class OpretMedlem implements View {
     }
     @Override
     public void print() {
-        System.out.println("Opret nyt medlem");
+        io.println("Opret nyt medlem");
     }
 
     @Override
     public void handleInput() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Navn: ");
-        String navn = in.next();
-        System.out.println("Telefon: ");
-        String telefon = in.next();
-        System.out.println("Email: ");
-        String email = in.next();
-        System.out.println("Fødselsdato (Year-Month-Day): ");
-        LocalDate fødselsdato = LocalDate.parse(in.next());
-        System.out.println("Vælg status: ");
+        io.println("Navn: ");
+        String navn = io.getNextString();
+        io.println("Telefon: ");
+        String telefon = io.getNextString();
+        io.println("Email: ");
+        String email = io.getNextString();
+        io.println("Fødselsdato (Year-Month-Day): ");
+        LocalDate fødselsdato = LocalDate.parse(io.getNextString());
+        io.println("Vælg status: ");
         MedlemStatus[] status = MedlemStatus.values();
         for (int i = 0; i < status.length; i++) {
-            System.out.printf("%d) %s\n", i, status[i]);
+            io.printf("%d) %s\n", i, status[i]);
         }
-        int valg = in.nextInt();
+        int valg = io.getNextInt();
         MedlemStatus valgtStatus = status[valg];
-        System.out.println("Konkurrence svømmer (ja/nej, default=nej): ");
-        String konkurrenceSvømmer = in.next();
+        io.println("Konkurrence svømmer (ja/nej, default=nej): ");
+        String konkurrenceSvømmer = io.getNextString();
         if (konkurrenceSvømmer.equalsIgnoreCase("ja")) {
             controller.tilføjMedlem(new KonkurrenceSvømmer(navn, telefon, email, fødselsdato, valgtStatus));
         } else {
             controller.tilføjMedlem(new Medlem(navn, telefon, email, fødselsdato, valgtStatus));
         }
-        System.out.printf("%s er nu oprettet som medlem\n", navn);
+        io.printf("%s er nu oprettet som medlem\n", navn);
         controller.setView(StartMenu.getInstance());
     }
 
     @Override
     public void setController(Controller c) {
         this.controller = c;
+    }
+
+    public void setIO (KonsolInputOutput io) {
+        this.io = io;
+    }
+
+    @Override
+    public KonsolInputOutput getIO() {
+        return io;
     }
 
     @Override

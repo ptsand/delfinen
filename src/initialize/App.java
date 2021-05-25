@@ -1,16 +1,13 @@
 package initialize;
 
 import controller.Controller;
-import view.StartMenu;
-import view.View;
+import util.KonsolInputOutput;
 
 public class App {
 
     public static void main(String[] args) {
-        View start = StartMenu.getInstance();
-        Controller controller = new Controller(start);
-        controller.hentTilstand();
-        controller.setView(start);
+        KonsolInputOutput io = new KonsolInputOutput();
+        Controller controller = new Controller(io);
     }
 
 }

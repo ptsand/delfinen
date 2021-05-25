@@ -4,6 +4,7 @@ import controller.Controller;
 import model.Disciplin;
 import model.KonkurrenceSvømmer;
 import model.Medlem;
+import util.KonsolInputOutput;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -18,6 +19,7 @@ import java.util.stream.Stream;
 public class SeTop5 implements View {
 
     private Controller controller;
+    private KonsolInputOutput io;
     private static SeTop5 instance;
 
     public static SeTop5 getInstance(){
@@ -29,29 +31,29 @@ public class SeTop5 implements View {
 
     @Override
     public void print() {
-        System.out.println("Se top5");
+        io.println("Se top5");
     }
 
     @Override
     public void handleInput() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Vælg junior (j) / senior (s) (default: j):");
-        String juniorSenior = in.next();
-        System.out.println("Vælg disciplin: ");
+        io.println("Vælg junior (j) / senior (s) (default: j):");
+        String juniorSenior = io.getNextString();
+        io.println("Vælg disciplin: ");
         Disciplin[] disciplin = Disciplin.values();
         for (int i = 0; i < disciplin.length; i++) {
-            System.out.printf("%d) %s\n", i, disciplin[i]);
+            io.printf("%d) %s\n", i, disciplin[i]);
         }
-        int index = in.nextInt();
+        int index = io.getNextInt();
         Disciplin valgtDisciplin = disciplin[index];
         List<Medlem> svømmer = getSvømmer(valgtDisciplin, juniorSenior);
         // sorter resultater for seniore - eller juniore efter bedste tid inden for den valgte disciplin
         Collections.sort(svømmer, getComparator(valgtDisciplin));
-        System.out.println("top 5 indenfor " + disciplin[index]);
+        io.println("top 5 indenfor " + disciplin[index]);
 
         for (int i = 0; i < svømmer.size() && i <= 4; i++) {
             Medlem s = svømmer.get(i);
-            System.out.printf("%d) %s : %d ms\n", i+1, s.getNavn(),
+            io.printf("%d) %s : %d ms\n", i+1, s.getNavn(),
                     ((KonkurrenceSvømmer) s).getDisciplinResultat().get(disciplin[index]));
         }
         controller.setView(StartMenu.getInstance());
@@ -60,6 +62,16 @@ public class SeTop5 implements View {
     @Override
     public void setController(Controller c) {
         this.controller = c;
+    }
+
+    @Override
+    public void setIO(KonsolInputOutput io) {
+        this.io = io;
+    }
+
+    @Override
+    public KonsolInputOutput getIO() {
+        return io;
     }
 
     @Override
@@ -75,12 +87,12 @@ public class SeTop5 implements View {
     // Returner kun Seniorerne eller Juniorerne indenfor en disciplin
     private List<Medlem> getSvømmer(Disciplin disciplin, String juniorSenior) {
         if (juniorSenior.equalsIgnoreCase("s")) {
-            System.out.print("Senior ");
+            io.print("Senior ");
             return getSvømmer(disciplin)
                     .filter(p -> ChronoUnit.YEARS.between(p.getFødselsdato(), LocalDate.now()) >= 18)
                     .collect(Collectors.toList());
         } else {
-            System.out.print("Junior ");
+            io.print("Junior ");
             return getSvømmer(disciplin)
                     .filter(p -> ChronoUnit.YEARS.between(p.getFødselsdato(), LocalDate.now()) < 18)
                     .collect(Collectors.toList());

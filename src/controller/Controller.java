@@ -4,6 +4,8 @@ import model.Disciplin;
 import model.KonkurrenceSvømmer;
 import model.Medlem;
 import model.MedlemStatus;
+import util.KonsolInputOutput;
+import view.StartMenu;
 import view.View;
 
 import java.io.*;
@@ -13,19 +15,23 @@ import java.util.ArrayList;
 public class Controller {
 
     private ArrayList<Medlem> medlem = new ArrayList<Medlem>();
+    private KonsolInputOutput io;
     private View view;
 
     public ArrayList<Medlem> getMedlem() {
         return medlem;
     }
 
-    public Controller(View view) {
-        this.view = view;
+    public Controller(KonsolInputOutput io) {
+        this.io = io;
+        hentTilstand();
+        setView(StartMenu.getInstance());
     }
 
     public void setView(View view) {
         this.view = view;
         if (view.getController() == null) view.setController(this);
+        if (view.getIO() == null) view.setIO(io);
         view.print();
         view.handleInput();
     }
