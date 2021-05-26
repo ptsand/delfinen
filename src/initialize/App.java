@@ -9,5 +9,4 @@ public class App {
         KonsolInputOutput io = new KonsolInputOutput();
         Controller controller = new Controller(io);
     }
-
 }

@@ -38,7 +38,6 @@ public class TilføjTræningsResultat implements View {
 
     @Override
     public void handleInput() {
-        Scanner in = new Scanner(System.in);
         int index = io.getNextInt();
         Medlem svømmer = this.svømmer.get(index);
         io.println("Vælg disciplin: ");
