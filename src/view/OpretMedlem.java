@@ -32,7 +32,7 @@ public class OpretMedlem implements View {
         String telefon = io.getNextString();
         io.println("Email: ");
         String email = io.getNextString();
-        io.println("Fødselsdato (Year-Month-Day): ");
+        io.println("Fødselsdato (YYYY-MM-DD): ");
         LocalDate fødselsdato = LocalDate.parse(io.getNextString());
         io.println("Vælg status: ");
         MedlemStatus[] status = MedlemStatus.values();
