@@ -25,6 +25,21 @@ class ControllerTest {
 
 
     }
+    @Test
+    void sletMedlemTest(){
+        //Arrange
+        KonsolInputOutput io = new KonsolInputOutput();
+        Controller controller = new Controller(io);
+
+        //Act
+        Medlem m1 = new Medlem("Anders", "22210803", "asd@gmail.com", LocalDate.parse("2019-06-09"),MedlemStatus.AKTIV);
+        //Assert
+        assertTrue(controller.getMedlem().isEmpty());
+        controller.tilføjMedlem(m1);
+        assertFalse(controller.getMedlem().isEmpty());
+        controller.sletMedlem(m1);
+        assertTrue(controller.getMedlem().isEmpty());
+    }
 
 
 }
