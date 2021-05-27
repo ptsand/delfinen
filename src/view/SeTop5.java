@@ -10,12 +10,11 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.time.temporal.ChronoUnit;
 import java.util.stream.Stream;
 
-// @Author Peter Sand
+// @Author Peter
 public class SeTop5 implements View {
 
     private Controller controller;

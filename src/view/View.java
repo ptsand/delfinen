@@ -3,7 +3,7 @@ package view;
 import controller.Controller;
 import util.KonsolInputOutput;
 
-// @Author Peter Sand
+// @Author Peter
 public interface View {
     void print();
     void handleInput();

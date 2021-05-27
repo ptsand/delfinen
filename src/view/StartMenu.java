@@ -1,9 +1,8 @@
 package view;
 
-import java.util.Scanner;
 import controller.Controller;
 import util.KonsolInputOutput;
-
+//@Author Simon
 public class StartMenu implements View {
 
     private Controller controller;

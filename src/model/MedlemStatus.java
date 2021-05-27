@@ -1,5 +1,5 @@
 package model;
-// @Author Peter Sand
+// @Author Nicolas
 public enum MedlemStatus {
     PASSIV, AKTIV
 }

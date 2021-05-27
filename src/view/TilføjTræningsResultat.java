@@ -7,9 +7,9 @@ import model.Medlem;
 import util.KonsolInputOutput;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
+//@Author Peter
 public class TilføjTræningsResultat implements View {
 
     private Controller controller;

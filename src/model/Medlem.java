@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
+//@Author Simon
 public class Medlem implements Serializable {
 
     private String navn, tlf, email;

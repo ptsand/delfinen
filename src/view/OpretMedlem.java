@@ -7,6 +7,7 @@ import model.Medlem;
 import model.MedlemStatus;
 import util.KonsolInputOutput;
 
+//@Author Nicolas
 public class OpretMedlem implements View {
 
     private Controller controller;

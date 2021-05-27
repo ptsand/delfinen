@@ -3,12 +3,11 @@ import model.Medlem;
 import model.MedlemStatus;
 import org.junit.jupiter.api.Test;
 import util.KonsolInputOutput;
-import view.OpretMedlem;
 
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 class ControllerTest {
-
+    //@Author Simon
     @Test
     void tilføjMedlemTest(){
         //Arrange
@@ -25,6 +24,7 @@ class ControllerTest {
 
 
     }
+    //@Author Nicolas
     @Test
     void sletMedlemTest(){
         //Arrange

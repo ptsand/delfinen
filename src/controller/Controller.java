@@ -12,6 +12,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+// @Author Peter
 public class Controller {
 
     private ArrayList<Medlem> medlem = new ArrayList<Medlem>();

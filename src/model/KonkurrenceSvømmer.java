@@ -2,7 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.EnumMap;
-
+//@Author Nicolas
 public class KonkurrenceSvømmer extends Medlem {
 
     // Mapping fra disciplin til bedste træningsresultat i ms

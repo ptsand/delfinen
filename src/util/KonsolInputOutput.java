@@ -2,6 +2,7 @@ package util;
 
 import java.util.Scanner;
 // Wrapper klasse mhb på unit test af views
+// @Author Peter
 public class KonsolInputOutput {
 
     private Scanner input = new Scanner(System.in);

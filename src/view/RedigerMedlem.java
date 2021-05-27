@@ -6,7 +6,7 @@ import model.MedlemStatus;
 import util.KonsolInputOutput;
 
 import java.util.Scanner;
-
+// @Author Simon
 public class RedigerMedlem implements View {
 
     private Controller controller;
