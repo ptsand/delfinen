@@ -36,7 +36,6 @@ public class SeTop5 implements View {
 
     @Override
     public void handleInput() {
-        Scanner in = new Scanner(System.in);
         io.println("Vælg junior (j) / senior (s) (default: j):");
         String juniorSenior = io.getNextString();
         io.println("Vælg disciplin: ");

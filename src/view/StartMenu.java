@@ -29,7 +29,6 @@ public class StartMenu implements View {
 
     @Override
     public void handleInput() {
-        Scanner in = new Scanner(System.in);
         switch (io.getNextString()) {
             case "1":
                 controller.setView(OpretMedlem.getInstance());
