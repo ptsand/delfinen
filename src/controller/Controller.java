@@ -24,8 +24,7 @@ public class Controller {
 
     public Controller(KonsolInputOutput io) {
         this.io = io;
-        hentTilstand();
-        setView(StartMenu.getInstance());
+
     }
 
     public void setView(View view) {
@@ -35,7 +34,10 @@ public class Controller {
         view.print();
         view.handleInput();
     }
-
+    public void opstart(){
+        hentTilstand();
+        setView(StartMenu.getInstance());
+    }
     public void tilføjMedlem(Medlem medlem) {
         this.medlem.add(medlem);
     }
